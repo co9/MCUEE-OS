@@ -92,6 +92,7 @@ int TASK_Excute()
     }
     TASK_Switch();
     return 0;
+
 }
 /*
 int *TASK_Where()
@@ -101,14 +102,7 @@ int *TASK_Where()
   return Get_info;
 }*/
 //TASK Sned Output ???
-int TASK_Output(void *parameter,int Prior)
-{
-  TASK_Out[Prior]=parameter;
-  //printf("%p\n",ptr);
-  //printf("%d\n",(int*)var);
-  return 0;
-}
 int TASK_NULL()
-{
+{		
     return 0;
 }

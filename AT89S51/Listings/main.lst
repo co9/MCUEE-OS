@@ -1,0 +1,96 @@
+C51 COMPILER V9.54   MAIN                                                                  01/07/2016 17:50:31 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\OS) DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "core.h"
+   3          #define LED P2
+   4          
+   5          extern int timer;
+   6          int count=0;
+   7          
+   8          //LED Open
+   9          int  TASK1()
+  10          {
+  11   1        LED=0xFF;
+  12   1        return 0;
+  13   1      }
+  14          
+  15          //LED Close
+  16          int  TASK2()
+  17          {
+  18   1        LED=0x00;
+  19   1        return 0;
+  20   1      }
+  21          
+  22          //Timer0 Init
+  23          int Timer_Init()
+  24          {
+  25   1        TMOD=0x01;
+  26   1        TH0=(65536-50000)/256;
+  27   1        TL0=(65536-50000)%256;
+  28   1        IE=0x82;
+  29   1        TR0=1;
+  30   1        return 0;
+  31   1      }
+  32          
+  33          //Timer0 interrupt
+  34          void timer0(void) interrupt 1 using 2
+  35          {
+  36   1        //1S
+  37   1        if(count>20)
+  38   1        {
+  39   2          timer++;
+  40   2          count=0;
+  41   2          
+  42   2        }
+  43   1        else
+  44   1        {
+  45   2          TR0=0;
+  46   2          count++;  
+  47   2          TH0=(65536-50000)/256;
+  48   2          TL0=(65536-50000)%256;
+  49   2          TR0=1;
+  50   2        }
+  51   1      }
+  52          
+  53          //Main programming
+  54          int main()
+C51 COMPILER V9.54   MAIN                                                                  01/07/2016 17:50:31 PAGE 2   
+
+  55          {
+  56   1        Timer_Init();
+  57   1        
+  58   1        OS_Start();
+  59   1        TASK_Create(TASK1,0,2);
+  60   1        TASK_Create(TASK2,1,5);
+  61   1        while(1)
+  62   1        {
+  63   2          TASK_Excute();
+  64   2          if(timer>20)TASK_Delete(TASK1);
+  65   2          if(timer>60)OS_Stop();
+  66   2        }
+  67   1      
+  68   1        return 0;
+  69   1      }
+*** WARNING C294 IN LINE 68 OF main.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    173    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -3,17 +3,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define TASK_MAX 20
-
+#include <reg51.h>
+#define TASK_MAX 9
 
 //OS Start and Task init
 int OS_Start(void);
 
 //Task init
 int OS_Stop(void);
-
-//Parameter Output
-void *TASK_Out[TASK_MAX];
 
 //Now TASK
 //int TASK_Now[TASK_MAX];
@@ -60,6 +57,4 @@ int TASK_Excute(void);
 
 //Empty Task
 int TASK_NULL(void);
-
-int TASK_Output(void *parameter,int Prior);
 #endif

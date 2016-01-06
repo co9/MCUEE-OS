@@ -15,9 +15,6 @@ int OS_Stop(void);
 //Parameter Output
 void *TASK_Out[TASK_MAX];
 
-//Now TASK
-//int TASK_Now[TASK_MAX];
-
 /*******************************************/
 /*1.Name:TASK_Init                         */
 /*2.input:void                             */

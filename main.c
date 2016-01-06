@@ -1,6 +1,7 @@
 //Test On Windows 10
 //GNU GCC C99
 #include "core.h"
+#include "mail.h"
 #include <windows.h>
 
 extern int timer;
@@ -44,7 +45,7 @@ int main()
     if(timer==40)OS_Stop();
 
     //delay 1s
-    sleep(1);
+    Sleep(1000);
   }
 
 }

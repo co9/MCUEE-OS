@@ -12,6 +12,9 @@ int (*TASK_Sched[TASK_MAX])(void);
 //TASK Time
 int TASK_Time[TASK_MAX];
 
+//Now TASK
+//int TASK_Now[TASK_MAX];
+
 //Init OS
 int OS_Start(void)
 {
@@ -92,6 +95,7 @@ int TASK_Excute()
     }
     TASK_Switch();
     return 0;
+
 }
 /*
 int *TASK_Where()
@@ -101,13 +105,14 @@ int *TASK_Where()
   return Get_info;
 }*/
 //TASK Sned Output ???
+/*
 int TASK_Output(void *parameter,int Prior)
 {
   TASK_Out[Prior]=parameter;
-  //printf("%p\n",ptr);
+  printf("%p\n",ptr);
   //printf("%d\n",(int*)var);
   return 0;
-}
+}*/
 int TASK_NULL()
 {
     return 0;
