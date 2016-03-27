@@ -2,6 +2,14 @@
 Simple Time-Sharing and Task Scheduler Dispatch
 
 #ChangLog:
+2016/3/27
+
+Kernel V1.1:
+
+TASK Return value type from int to u_int_8 
+
+efficacy improve
+
 2015/12/29:
 
 Kernel V1.0:
