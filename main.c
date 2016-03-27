@@ -1,23 +1,22 @@
 //Test On Windows 10
 //GNU GCC C99
 #include "core.h"
-#include "mail.h"
-#include <windows.h>
-
+//#include <windows.h>
+#include <unistd.h>
 extern int timer;
-int task1()
+u_int_8 task1()
 {
-  printf("I am first task\n");
+//printf("I am first task\n");
   return 0;
 }
-int task2()
+u_int_8 task2()
 {
-  printf("I am second task\n");
+ // printf("I am second task\n");
   return 0;
 }
-int task3()
+u_int_8 task3()
 {
-  printf("I am third task\n");
+ // printf("I am third task\n");
   return 0;
 }
 
@@ -30,22 +29,22 @@ int main()
   TASK_Create(task1,0,2);
   TASK_Create(task2,1,5);
   TASK_Create(task3,2,6);
-  while(1)
+ while(1)
   {
     timer++;
     TASK_Excute();
 
     //print timer value
-    printf("timer:%d\n",timer);
+    //printf("timer:%d\n",timer);
 
     //TASK Delete test
-    if(timer==20)TASK_Delete(task1);
+   //if(timer==20)TASK_Delete(task1);
 
     //OS Stop test
-    if(timer==40)OS_Stop();
+    //if(timer==40)OS_Stop();
 
     //delay 1s
-    Sleep(1000);
+    sleep(1);
   }
 
 }

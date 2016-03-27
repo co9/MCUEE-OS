@@ -5,12 +5,16 @@
 #include <stdlib.h>
 #define TASK_MAX 20
 
-
+//define symbol
+typedef unsigned char u_int_8;
+typedef signed char s_int_8;
+typedef unsigned int u_int_16;
+typedef signed int s_int_16;
 //OS Start and Task init
-int OS_Start(void);
+u_int_8 OS_Start(void);
 
 //Task init
-int OS_Stop(void);
+u_int_8  OS_Stop(void);
 
 //Parameter Output
 void *TASK_Out[TASK_MAX];
@@ -25,7 +29,7 @@ void *TASK_Out[TASK_MAX];
 /*4.excute succeed return 0                */
 /*Clear TASK TABLE,TASK Sched and TASK Time*/
 /*******************************************/
-int TASK_Init(void);
+u_int_8 TASK_Init(void);
 
 /*******************************************/
 /*1.Name:TASK_Create                       */
@@ -36,7 +40,7 @@ int TASK_Init(void);
 /*put prior on Task prior                  */
 /*put TASK Time on TASK Time               */
 /*******************************************/
-int TASK_Create(int (*TASK)(),int Priormint,int timer);
+u_int_8 TASK_Create(u_int_8 (*TASK)(),u_int_8 Priormint,u_int_8 timer);
 
 /*****************************************************/
 /*1.Name:TASK_Delete                                 */
@@ -46,7 +50,7 @@ int TASK_Create(int (*TASK)(),int Priormint,int timer);
 /*Remoce Task on TASK TABLE and put TASK_NULL on TASK*/
 /*put -1 on Task Time                                */
 /*****************************************************/
-int TASK_Delete(int (*TASK)());
+u_int_8 TASK_Delete(u_int_8 (*TASK)());
 
 /*****************************************************/
 /*1.Name:TASK_Excute                                 */
@@ -54,12 +58,14 @@ int TASK_Delete(int (*TASK)());
 /*3.output:int                                       */
 /*4.excute succeed return 0                          */
 /*****************************************************/
-int TASK_Excute(void);
+u_int_8 TASK_Excute(void);
 
 //int *TASK_Where(void);
 
 //Empty Task
-int TASK_NULL(void);
+u_int_8 TASK_NULL(void);
 
-int TASK_Output(void *parameter,int Prior);
+u_int_8 TASK_Output(void *parameter,u_int_8 Prior);
+
+
 #endif

@@ -1,5 +1,5 @@
 all:
-	gcc main.c core.c mail.c -std=c99 -o main
+	gcc main.c core.c  -std=c99 -o main
 main: main.c
 	gcc main.c core.c -std=c99 -o main
 debug:

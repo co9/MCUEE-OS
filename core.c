@@ -4,28 +4,28 @@
 int timer=0;
 
 //TASK TABLE
-int (*TASK_Ptr[TASK_MAX])(void);
+u_int_8 (*TASK_Ptr[TASK_MAX])(void);
 
 //TASK Sched
-int (*TASK_Sched[TASK_MAX])(void);
+u_int_8 (*TASK_Sched[TASK_MAX])(void);
 
 //TASK Time
-int TASK_Time[TASK_MAX];
+u_int_8 TASK_Time[TASK_MAX];
 
 //Init OS
-int OS_Start(void)
+u_int_8 OS_Start(void)
 {
     if(TASK_Init()!=0)return -1;
     return 0;
 }
 
-int OS_Stop(void)
+u_int_8 OS_Stop(void)
 {
     if(TASK_Init()!=0)return -1;
     return 0;
 }
 
-int TASK_Init(void)
+u_int_8 TASK_Init(void)
 {
     int i=0;
     for(i=0;i<TASK_MAX-1;i++)
@@ -36,14 +36,14 @@ int TASK_Init(void)
     }
     return 0;
 }
-int TASK_Create(int (*TASK)(),int Prior,int timer)
+u_int_8 TASK_Create(u_int_8 (*TASK)(),u_int_8 Prior,u_int_8 timer)
 {
     TASK_Ptr[Prior]=TASK;
     TASK_Time[Prior]=timer;
     return 0;
 }
 
-int TASK_Delete(int (*TASK)())
+u_int_8 TASK_Delete(u_int_8 (*TASK)())
 {
     int i=0;
     for(i=0;i<TASK_MAX-1;i++)
@@ -59,7 +59,7 @@ int TASK_Delete(int (*TASK)())
 }
 
 //TASK Dispatch
-int TASK_Switch()
+u_int_8 TASK_Switch()
 {
    int i=0;
    int j=0;
@@ -77,7 +77,7 @@ int TASK_Switch()
    }
    return 0;
 }
-int TASK_Excute()
+u_int_8 TASK_Excute()
 {
     int i=0;
     //TASK Excute
@@ -101,14 +101,14 @@ int *TASK_Where()
   return Get_info;
 }*/
 //TASK Sned Output ???
-int TASK_Output(void *parameter,int Prior)
+u_int_8 TASK_Output(void *parameter,u_int_8 Prior)
 {
   TASK_Out[Prior]=parameter;
   //printf("%p\n",ptr);
   //printf("%d\n",(int*)var);
   return 0;
 }
-int TASK_NULL()
+u_int_8 TASK_NULL()
 {
     return 0;
 }
